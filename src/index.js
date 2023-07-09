@@ -5,11 +5,12 @@ const handlebars = require('express-handlebars');
 const app = express()
 const port = 3000
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 //HTTP Logger
 app.use(morgan('combined'))
 // node: path / posix
 // Template engine
-
 
 app.engine('hbs', handlebars({
     extname: '.hbs'
@@ -26,6 +27,4 @@ app.get('/news', (req, res) => {
     res.render('news')
 })
 // 127.0.0.1 - localhost 
-
-
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
